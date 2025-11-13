@@ -116,3 +116,26 @@ try menjalankan returnError().
 catch menangkap exception dari returnError() dan menampilkannya ke UI (setState).
 
 finally dijalankan selalu, entah sukses atau gagal (di sini hanya print 'Complete')
+
+# Praktikum 6: Menggunakan Future dengan StatefulWidget
+
+## Soal 11
+
+Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+
+```.dart:
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Current Location - Erwan Majid 06')),
+      body: Center(child: Text(myPosition)),
+    );
+  }
+```
+
+# Soal 12
+
+![result](IMG/8.gif)
+
+Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
+
+-Mendapatkan koordinat, karena browser meminta akses lokasi kepada kita, dan di allow
