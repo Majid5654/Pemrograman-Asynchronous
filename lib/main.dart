@@ -32,6 +32,11 @@ class FuturePage extends StatefulWidget {
 }
 
 class _FuturePageState extends State<FuturePage> {
+  Future returnError() async {
+    await Future.delayed(const Duration(seconds: 2));
+    throw Exception('Something terrible happened.');
+  }
+
   late Completer completer;
 
   void returnFG() {
@@ -111,32 +116,46 @@ class _FuturePageState extends State<FuturePage> {
             ElevatedButton(
               child: const Text('GO!'),
               onPressed: () {
-                returnFG();
-                // getData()
-                //     .then((value) {
-                //       result = value.body.toString().substring(0, 450);
-                //       setState(() {});
-                //     })
-                //     .catchError((_) {
-                //       result = 'An error occurred';
-                //       setState(() {});
-                //     });
-
-                //count();
-                //},
-                //),
-                //getNumber()
-                // .then((value) {
-                // setState(() {
-                // result = value.toString();
-                //});
-                //})
-                //.catchError((e) {
-                //result = 'An error occurred';
-                //});
+                returnError()
+                    .then((value) {
+                      setState(() {
+                        result = 'Success';
+                      });
+                    })
+                    .catchError((onError) {
+                      setState(() {
+                        result = onError.toString();
+                      });
+                    })
+                    .whenComplete(() => print('Complete'));
               },
             ),
 
+            //returnFG();
+            // getData()
+            //     .then((value) {
+            //       result = value.body.toString().substring(0, 450);
+            //       setState(() {});
+            //     })
+            //     .catchError((_) {
+            //       result = 'An error occurred';
+            //       setState(() {});
+            //     });
+
+            //count();
+            //},
+            //),
+            //getNumber()
+            // .then((value) {
+            // setState(() {
+            // result = value.toString();
+            //});
+            //})
+            //.catchError((e) {
+            //result = 'An error occurred';
+            //});
+            //},
+            //),
             const Spacer(),
             Text(result),
             const Spacer(),
