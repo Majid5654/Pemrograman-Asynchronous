@@ -80,3 +80,9 @@ Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 7".
 
 ![result](IMG/6.gif)
+
+## Soal 8
+
+Jelaskan maksud perbedaan kode langkah 1 dan 4!
+
+-Perbedaan antara langkah 1 dan langkah 4 terletak pada cara menunggu proses asynchronous secara bersamaan. Pada langkah 1, kode menggunakan FutureGroup dari package eksternal async, di mana setiap future harus ditambahkan satu per satu menggunakan add() dan ditutup dengan close() sebelum hasilnya diproses. Sementara pada langkah 4, kode menggunakan Future.wait yang merupakan fitur bawaan Dart, cukup dengan memberikan daftar future di dalam list untuk dijalankan secara paralel tanpa perlu menutup atau menambahkannya manual.
