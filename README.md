@@ -72,3 +72,11 @@ Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
 -Pada langkah 2, kode hanya menjalankan proses asynchronous dengan Completer, menunggu 5 detik, lalu mengembalikan nilai 42 tanpa memeriksa kemungkinan error.
 
 -Sedangkan pada langkah 5–6, kode menambahkan blok try-catch untuk menangkap error selama proses Future.delayed, dan jika terjadi kesalahan, completer.completeError() dijalankan agar error dapat diteruskan ke .catchError() pada pemanggilan getNumber(). Dengan begitu, aplikasi menjadi lebih aman dan terkontrol karena mampu menampilkan pesan kesalahan jika terjadi error.
+
+# Praktikum 4: Memanggil Future secara paralel
+
+## Soal 7
+
+Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 7".
+
+![result](IMG/6.gif)
