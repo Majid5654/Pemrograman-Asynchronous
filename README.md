@@ -94,3 +94,25 @@ Jelaskan maksud perbedaan kode langkah 1 dan 4!
 Capture hasil praktikum Anda berupa GIF dan lampirkan di README. Lalu lakukan commit dengan pesan "W11: Soal 9".
 
 ![result](IMG/7.gif)
+
+## Soal 10
+
+Panggil method handleError() tersebut di ElevatedButton, lalu run. Apa hasilnya? Jelaskan perbedaan kode langkah 1 dan 4!
+
+-Muncul exception something teribble happened
+
+Langkah 1 Ini adalah fungsi yang menghasilkan error secara sengaja.
+
+Setelah menunggu 2 detik (Future.delayed), fungsi ini melempar Exception.
+
+Jadi, returnError() hanya bertugas mensimulasikan error dari operasi asynchronous
+
+Langkah 4
+
+Ini adalah fungsi yang memanggil returnError() dan menangani error-nya.
+
+try menjalankan returnError().
+
+catch menangkap exception dari returnError() dan menampilkannya ke UI (setState).
+
+finally dijalankan selalu, entah sukses atau gagal (di sini hanya print 'Complete')
