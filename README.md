@@ -60,3 +60,15 @@ Di dalamnya terdapat variabel total yang digunakan untuk menampung hasil penjuml
 Jelaskan maksud kode langkah 2 tersebut!:
 
 berfungsi untuk membuat proses asynchronous menggunakan Completer, yang memungkinkan kita mengontrol kapan sebuah Future dianggap selesai. Variabel completer menyimpan objek Completer<int> yang nantinya menghasilkan nilai berupa angka. Fungsi getNumber() memanggil calculate(), lalu mengembalikan Future dari completer. Sementara itu, fungsi calculate() menunda eksekusi selama 5 detik menggunakan Future.delayed(), kemudian menyelesaikan Future dengan memberikan nilai 42 melalui completer.complete(42). Hasilnya, setelah 5 detik, nilai 42 akan dikembalikan dan bisa ditampilkan ke layar.
+
+## Soal 6
+
+## Result :
+
+![result](IMG/5.gif)
+
+Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
+
+-Pada langkah 2, kode hanya menjalankan proses asynchronous dengan Completer, menunggu 5 detik, lalu mengembalikan nilai 42 tanpa memeriksa kemungkinan error.
+
+-Sedangkan pada langkah 5–6, kode menambahkan blok try-catch untuk menangkap error selama proses Future.delayed, dan jika terjadi kesalahan, completer.completeError() dijalankan agar error dapat diteruskan ke .catchError() pada pemanggilan getNumber(). Dengan begitu, aplikasi menjadi lebih aman dan terkontrol karena mampu menampilkan pesan kesalahan jika terjadi error.
