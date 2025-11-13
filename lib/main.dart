@@ -31,6 +31,19 @@ class FuturePage extends StatefulWidget {
 }
 
 class _FuturePageState extends State<FuturePage> {
+  late Completer completer;
+
+  Future getNumber() {
+    completer = Completer<int>();
+    calculate();
+    return completer.future;
+  }
+
+  Future calculate() async {
+    await Future.delayed(const Duration(seconds: 5));
+    completer.complete(42);
+  }
+
   String result = '';
 
   Future<Response> getData() async {
@@ -88,9 +101,17 @@ class _FuturePageState extends State<FuturePage> {
                 //       setState(() {});
                 //     });
 
-                count();
+                //count();
+                //},
+                //),
+                getNumber().then((value) {
+                  setState(() {
+                    result = value.toString();
+                  });
+                });
               },
             ),
+
             const Spacer(),
             Text(result),
             const Spacer(),
