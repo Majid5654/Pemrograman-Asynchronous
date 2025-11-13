@@ -1,19 +1,19 @@
-# Erwan Majid 06
+# Praktikum 1: Mengunduh Data dari Web Service (API)
 
-# Soal 1
+## Soal 1
 
 Tambahkan nama panggilan Anda pada title app sebagai identitas hasil
 pekerjaan Anda
 
 ![json](IMG/2.png)
 
-# Soal 2
+## Soal 2
 
 cobalah akses di browser URI tersebut dengan lengkap seperti ini. Jika menampilkan data JSON, maka Anda telah berhasi
 
 ![json](IMG/1.png)
 
-# Soal 3
+## Soal 3
 
 Jelaskan maksud kode langkah 5 tersebut terkait substring dan catchError!
 
@@ -28,6 +28,23 @@ Tidak ada koneksi internet, URL salah,Server API down
 substring(0, 450) membatasi teks dari hasil API supaya tidak terlalu panjang.
 catchError menangkap dan menampilkan pesan error jika permintaan API gagal
 
-# Result :
+## Result :
 
 ![result](IMG/2.gif)
+
+# Praktikum 2: Menggunakan await/async untuk menghindari callbacks
+
+## Result :
+
+![result](IMG/3.gif)
+
+## Soal 4
+
+## Jelaskan maksud kode langkah 1 dan 2 tersebut!
+
+method async :
+
+tiga method asynchronous (returnOneAsync, returnTwoAsync, dan returnThreeAsync). Masing-masing method menggunakan Future.delayed selama tiga detik untuk mensimulasikan proses yang memerlukan waktu, seperti mengambil data dari server. Setelah waktu tunggu selesai, setiap method akan mengembalikan nilai bilangan bulat (1, 2, dan 3)
+
+method count :
+Di dalamnya terdapat variabel total yang digunakan untuk menampung hasil penjumlahan dari ketiga method sebelumnya. Prosesnya dilakukan secara berurutan menggunakan await, sehingga program akan menunggu setiap method selesai dijalankan sebelum melanjutkan ke berikutnya. Setelah ketiganya selesai, total hasil dijumlahkan menjadi 6 dan kemudian ditampilkan pada antarmuka pengguna melalui setState().
