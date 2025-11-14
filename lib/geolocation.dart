@@ -25,6 +25,7 @@ class _LocationScreenState extends State<LocationScreen>
       vsync: this,
       duration: const Duration(seconds: 2),
     )..repeat();
+
     _animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
 
     position!.then((myPos) {
@@ -54,6 +55,10 @@ class _LocationScreenState extends State<LocationScreen>
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const CircularProgressIndicator();
             } else if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasError) {
+                return const Text('Something terrible happened!');
+              }
+
               return Text(snapshot.data.toString());
             } else {
               return const Text('');
