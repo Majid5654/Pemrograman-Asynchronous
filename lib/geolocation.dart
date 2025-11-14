@@ -10,6 +10,7 @@ class LocationScreen extends StatefulWidget {
 
 class _LocationScreenState extends State<LocationScreen>
     with SingleTickerProviderStateMixin {
+  Future<Position>? position;
   String myPosition = '';
   late AnimationController _controller;
   late Animation<double> _animation;
@@ -18,51 +19,48 @@ class _LocationScreenState extends State<LocationScreen>
   void initState() {
     super.initState();
 
-    // Animasi berputar untuk loading
+    position = getPosition();
+
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(seconds: 2),
     )..repeat();
     _animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
 
-    getPosition().then((Position myPos) {
+    position!.then((myPos) {
       setState(() {
         myPosition =
-            'Latitude: ${myPos.latitude.toString()} - Longitude: ${myPos.longitude.toString()}';
+            'Latitude: ${myPos.latitude} - Longitude: ${myPos.longitude}';
         _controller.stop();
       });
     });
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  Future<Position> getPosition() async {
+    await Geolocator.isLocationServiceEnabled();
+    await Future.delayed(const Duration(seconds: 3));
+    Position position = await Geolocator.getCurrentPosition();
+    return position;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Current Location - Erwan Majid 06')),
+      appBar: AppBar(title: const Text('Current Location')),
       body: Center(
-        child: myPosition == ''
-            ? RotationTransition(
-                turns: _animation,
-                child: const Icon(
-                  Icons.location_on,
-                  size: 80,
-                  color: Colors.blue,
-                ),
-              )
-            : Text(myPosition, style: const TextStyle(fontSize: 16)),
+        child: FutureBuilder(
+          future: position,
+          builder: (BuildContext context, AsyncSnapshot<Position> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            } else if (snapshot.connectionState == ConnectionState.done) {
+              return Text(snapshot.data.toString());
+            } else {
+              return const Text('');
+            }
+          },
+        ),
       ),
     );
-  }
-
-  Future<Position> getPosition() async {
-    await Geolocator.requestPermission();
-    await Geolocator.isLocationServiceEnabled();
-    Position? position = await Geolocator.getCurrentPosition();
-    return position;
   }
 }

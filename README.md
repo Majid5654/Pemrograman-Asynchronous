@@ -139,3 +139,15 @@ Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerja
 Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
 
 -Mendapatkan koordinat, karena browser meminta akses lokasi kepada kita, dan di allow
+
+# Praktikum 7: Manajemen Future dengan FutureBuilder
+
+## Soal 13
+
+Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
+
+## Result :
+
+![result](IMG/9.gif)
+
+-Ada, karena versi ini menampilkan indikator loading sebelum menampilkan hasil lokasi, sedangkan praktikum sebelumnya langsung menampilkan data tanpa proses tunggu. Hal ini terjadi karena pada praktikum ini digunakan Future, proses asynchronous, dan FutureBuilder untuk merender tampilan berdasarkan status Future.
