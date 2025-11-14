@@ -162,3 +162,43 @@ FutureBuilder menampilkan UI sesuai state Future, sehingga penambahan blok snaps
 ## Result
 
 ![result](IMG/10.gif)
+
+# Praktikum 8: Navigation route dengan Future Function
+
+## Soal 15
+
+## Tambahkan nama panggilan Anda pada tiap properti title sebagai identitas pekerjaan Anda.
+
+## Silakan ganti dengan warna tema favorit Anda.
+
+```.dart:
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(' Erwan Majid 06 Navigation Second Screen'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Pick yellow Color'),
+          onPressed: () {
+            Navigator.pop(context, Colors.yellow);
+          },
+        ),
+      ),
+    );
+```
+
+## Soal 16
+
+![result](IMG/11.gif)
+
+Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+Setiap tombol di halaman kedua akan mengembalikan data warna ke halaman pertama, membuat background halaman pertama berubah.
+Ini bisa terjadi karena kombinasi penggunaan:
+
+Navigator.push() berpindah halaman dan menunggu data
+
+Navigator.pop() kembali ke halaman sebelumnya sambil mengirimkan data
+
+setState() memperbarui tampilan setelah data diterima
