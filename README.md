@@ -202,3 +202,42 @@ Navigator.push() berpindah halaman dan menunggu data
 Navigator.pop() kembali ke halaman sebelumnya sambil mengirimkan data
 
 setState() memperbarui tampilan setelah data diterima
+
+# Praktikum 9: Memanfaatkan async/await dengan Widget Dialog
+
+## Soal 17
+
+## Result :
+
+![result](IMG/12.gif)
+
+Cobalah klik setiap button, apa yang terjadi ? Mengapa demikian ?
+
+-Ketika tombol Change Color ditekan, aplikasi menampilkan sebuah dialog yang berisi tiga tombol pilihan warna, yaitu Red, Green, dan Blue_gray. Ketika salah satu tombol tersebut diklik, dialog akan tertutup dan warna background halaman utama akan berubah sesuai warna yang dipilih. Hal ini terjadi karena setiap tombol di dalam dialog mengubah nilai variabel color dan kemudian memanggil Navigator.pop() untuk menutup dialog sambil mengirimkan nilai tersebut kembali ke halaman utama. Setelah dialog tertutup, method \_showColorDialog() menjalankan setState(), sehingga Flutter melakukan rebuild tampilan. Karena variabel color sudah diperbarui, background halaman otomatis berubah mengikuti warna yang dipilih pengguna
+
+Gantilah 3 warna pada langkah 3 dengan warna favorit Anda!
+
+```.dart:
+extButton(
+              child: const Text('Red'),
+              onPressed: () {
+                color = Colors.red.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            TextButton(
+              child: const Text('Green'),
+              onPressed: () {
+                color = Colors.green.shade700;
+                Navigator.pop(context, color);
+              },
+            ),
+            TextButton(
+              child: const Text('Blue Gray'),
+              onPressed: () {
+                color = Colors.blueGrey;
+                Navigator.pop(context, color);
+              },
+            ),
+
+```
